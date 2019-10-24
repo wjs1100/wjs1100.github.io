@@ -20,7 +20,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '7.4.2',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
@@ -124,6 +124,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">NicoNicoNi</p>
   </div>
 
   <div class="site-nav-toggle">
@@ -144,9 +145,34 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">0</span></a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">12</span></a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
   </li>
   </ul>
@@ -219,7 +245,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="手迹数字识别"><a href="#手迹数字识别" class="headerlink" title="手迹数字识别"></a>手迹数字识别</h3><h5 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、windows下的Ubuntu子系统为工作系统，安装windows terminal为交互界面</span><br><span class="line">2、在swl中安装python、tensorflower、keras、jupyter notebook</span><br></pre></td></tr></table></figure>
+        <h3 id="手迹数字识别"><a href="#手迹数字识别" class="headerlink" title="手迹数字识别"></a>手迹数字识别</h3><h5 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h5><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、windows下的Ubuntu子系统为工作系统，安装windows terminal为交互界面</span><br><span class="line"><span class="number">2</span>、在swl中安装python、tensorflower、keras、jupyter notebook</span><br></pre></td></tr></table></figure>
 
 <p>#####　代码：</p>
 <p><strong>一、导入函数</strong></p>
@@ -241,7 +267,7 @@
 
 <p>输出：</p>
 <blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;Layer (type)                 Output Shape              Param #   </span><br><span class="line">&gt;=================================================================</span><br><span class="line">&gt;dense_4 (Dense)              (None, 512)               401920    </span><br><span class="line">&gt;_________________________________________________________________</span><br><span class="line">&gt;dense_5 (Dense)              (None, 256)               131328    </span><br><span class="line">&gt;_________________________________________________________________</span><br><span class="line">&gt;dense_6 (Dense)              (None, 10)                2570      </span><br><span class="line">&gt;=================================================================</span><br><span class="line">&gt;Total params: 535,818</span><br><span class="line">&gt;Trainable params: 535,818</span><br><span class="line">&gt;Non-trainable params: 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;Layer (type)                 Output Shape              Param #   </span><br><span class="line">&gt;=================================================================</span><br><span class="line">&gt;dense_4 (Dense)              (None, 512)               401920    </span><br><span class="line">&gt;<span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span></span><br><span class="line">&gt;dense_5 (Dense)              (None, 256)               131328    </span><br><span class="line">&gt;<span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span><span class="strong">_____</span></span><br><span class="line">&gt;dense_6 (Dense)              (None, 10)                2570      </span><br><span class="line">&gt;=================================================================</span><br><span class="line">&gt;Total params: 535,818</span><br><span class="line">&gt;Trainable params: 535,818</span><br><span class="line">&gt;Non-trainable params: 0</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p><strong>六、网络编译</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">network.compile(optimizer=<span class="string">'rmsprop'</span>,<span class="comment"># 优化器--rmsprop</span></span><br><span class="line">                loss=<span class="string">'categorical_crossentropy'</span>, <span class="comment"># 损失函数</span></span><br><span class="line">                metrics=[<span class="string">'accuracy'</span>]) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
@@ -251,7 +277,7 @@
 
 <p>输出：</p>
 <blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt;Epoch 1/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 38us/step - loss: 0.3802 - acc: 0.8845</span><br><span class="line">&gt;Epoch 2/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 36us/step - loss: 0.1375 - acc: 0.9581</span><br><span class="line">&gt;Epoch 3/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0874 - acc: 0.9733</span><br><span class="line">&gt;Epoch 4/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 39us/step - loss: 0.0606 - acc: 0.9805</span><br><span class="line">&gt;Epoch 5/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 36us/step - loss: 0.0438 - acc: 0.9867</span><br><span class="line">&gt;Epoch 6/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0321 - acc: 0.9899</span><br><span class="line">&gt;Epoch 7/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 34us/step - loss: 0.0242 - acc: 0.9927</span><br><span class="line">&gt;Epoch 8/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 34us/step - loss: 0.0188 - acc: 0.9942</span><br><span class="line">&gt;Epoch 9/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0141 - acc: 0.9953</span><br><span class="line">&gt;Epoch 10/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0115 - acc: 0.9965</span><br><span class="line">&gt;Epoch 11/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0094 - acc: 0.9970</span><br><span class="line">&gt;Epoch 12/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0078 - acc: 0.9977</span><br><span class="line">&gt;Epoch 13/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 34us/step - loss: 0.0067 - acc: 0.9979</span><br><span class="line">&gt;Epoch 14/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 34us/step - loss: 0.0054 - acc: 0.9984</span><br><span class="line">&gt;Epoch 15/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0049 - acc: 0.9987</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt;Epoch <span class="number">1</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">38</span>us/step - loss: <span class="number">0.3802</span> - acc: <span class="number">0.8845</span></span><br><span class="line">&gt;Epoch <span class="number">2</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">36</span>us/step - loss: <span class="number">0.1375</span> - acc: <span class="number">0.9581</span></span><br><span class="line">&gt;Epoch <span class="number">3</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">35</span>us/step - loss: <span class="number">0.0874</span> - acc: <span class="number">0.9733</span></span><br><span class="line">&gt;Epoch <span class="number">4</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">39</span>us/step - loss: <span class="number">0.0606</span> - acc: <span class="number">0.9805</span></span><br><span class="line">&gt;Epoch <span class="number">5</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">36</span>us/step - loss: <span class="number">0.0438</span> - acc: <span class="number">0.9867</span></span><br><span class="line">&gt;Epoch <span class="number">6</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">35</span>us/step - loss: <span class="number">0.0321</span> - acc: <span class="number">0.9899</span></span><br><span class="line">&gt;Epoch <span class="number">7</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">34</span>us/step - loss: <span class="number">0.0242</span> - acc: <span class="number">0.9927</span></span><br><span class="line">&gt;Epoch <span class="number">8</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">34</span>us/step - loss: <span class="number">0.0188</span> - acc: <span class="number">0.9942</span></span><br><span class="line">&gt;Epoch <span class="number">9</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">35</span>us/step - loss: <span class="number">0.0141</span> - acc: <span class="number">0.9953</span></span><br><span class="line">&gt;Epoch <span class="number">10</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">35</span>us/step - loss: <span class="number">0.0115</span> - acc: <span class="number">0.9965</span></span><br><span class="line">&gt;Epoch <span class="number">11</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">35</span>us/step - loss: <span class="number">0.0094</span> - acc: <span class="number">0.9970</span></span><br><span class="line">&gt;Epoch <span class="number">12</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">35</span>us/step - loss: <span class="number">0.0078</span> - acc: <span class="number">0.9977</span></span><br><span class="line">&gt;Epoch <span class="number">13</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">34</span>us/step - loss: <span class="number">0.0067</span> - acc: <span class="number">0.9979</span></span><br><span class="line">&gt;Epoch <span class="number">14</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">34</span>us/step - loss: <span class="number">0.0054</span> - acc: <span class="number">0.9984</span></span><br><span class="line">&gt;Epoch <span class="number">15</span>/<span class="number">15</span></span><br><span class="line">&gt;<span class="number">60000</span>/<span class="number">60000</span> [==============================] - <span class="number">2</span>s <span class="number">35</span>us/step - loss: <span class="number">0.0049</span> - acc: <span class="number">0.9987</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p><strong>八、检测</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">score = network.evaluate(test_images , test_labels)</span><br><span class="line">print(<span class="string">"loss:"</span>,score[<span class="number">0</span>])</span><br><span class="line">print(<span class="string">"accu:"</span>,score[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
@@ -378,7 +404,7 @@
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.2
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
   </div>
 
         
@@ -404,7 +430,7 @@
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
 
@@ -434,5 +460,7 @@
 
   
 
+  
 </body>
 </html>
+

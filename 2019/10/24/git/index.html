@@ -20,7 +20,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '7.4.2',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
@@ -124,6 +124,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+        <p class="site-subtitle">NicoNicoNi</p>
   </div>
 
   <div class="site-nav-toggle">
@@ -144,9 +145,34 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">0</span></a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">12</span></a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
   </li>
   </ul>
@@ -267,7 +293,7 @@
 <p>解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。</p>
 <p>用<code>git log --graph --pretty=oneline --abbrev-commit</code>命令可以看到分支合并图</p>
 <h4 id="8-bug分支"><a href="#8-bug分支" class="headerlink" title="8.bug分支"></a>8.bug分支</h4><p>当手头工作没有完成时，先把工作现场<code>git stash</code>一下，然后去修复bug，修复后，再<code>git stash pop</code>，回到工作现场；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当有多次现场保存时，按：</span><br><span class="line">git stash apply stash@&#123;0&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当有多次现场保存时，按：</span><br><span class="line">git stash apply <span class="symbol">stash@</span>&#123;<span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在master分支上修复的bug，想要合并到当前dev分支，可以用<code>git cherry-pick</code>命令，把bug提交的修改“复制”到当前分支，避免重复劳动。</p>
 <h4 id="9-多人协作"><a href="#9-多人协作" class="headerlink" title="9.多人协作"></a>9.多人协作</h4><p>因此，多人协作的工作模式通常是这样：</p>
@@ -313,26 +339,26 @@
 <li><p>忽略某些文件时，需要编写<code>.gitignore</code>；</p>
 </li>
 <li><pre><code> 已忽略文件强制上传 git add -f App.class
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `.gitignore`文件本身要放到版本库里，并且可以对`.gitignore`做版本管理！</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 14.git别名</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `.gitignore`文件本身要放到版本库里，并且可以对`.gitignore`做版本管理！</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### <span class="number">14</span>.git别名</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
  git config --global alias.st status
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   每个仓库的Git配置文件都放在`.git/config`文件中 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 15.搭建git服务器</span><br><span class="line"></span><br><span class="line">1. 安装git</span><br><span class="line"></span><br><span class="line">   sudo apt-get install git</span><br><span class="line"></span><br><span class="line">2. 新建一个git用户，并给予git用户sudo权限， 用来运行`git`服务</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   每个仓库的Git配置文件都放在<span class="code">`.git/config`</span>文件中 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">#### 15.搭建git服务器</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1. </span>安装git</span><br><span class="line"></span><br><span class="line">   sudo apt-get install git</span><br><span class="line"></span><br><span class="line"><span class="bullet">2. </span>新建一个git用户，并给予git用户sudo权限， 用来运行<span class="code">`git`</span>服务</span><br></pre></td></tr></table></figure>
  adduser git
  sudo  usermod -aG sudo git
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 切换到git用户 ,注意以下操作若无提示，均需要在git用户下执行</span><br></pre></td></tr></table></figure>
+ <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">3.</span> 切换到git用户 ,注意以下操作若无提示，均需要在git用户下执行</span><br></pre></td></tr></table></figure>
  su git
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. 创建证书登录</span><br><span class="line"></span><br><span class="line">   收集所有需要登录的用户的公钥，就是他们自己的`id_rsa.pub`文件，把所有公钥导入到`/home/git/.ssh/authorized_keys`文件里，一行一个。 </span><br><span class="line"></span><br><span class="line">5.  初始化Git仓库 </span><br><span class="line"></span><br><span class="line">   先选定一个目录作为Git仓库，假定是`/srv/sample.git`，在`/srv`目录下输入命令：</span><br></pre></td></tr></table></figure>
+ <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">4</span>. 创建证书登录</span><br><span class="line"></span><br><span class="line">   收集所有需要登录的用户的公钥，就是他们自己的`id_rsa.pub`文件，把所有公钥导入到`/home/git/.ssh/authorized_keys`文件里，一行一个。 </span><br><span class="line"></span><br><span class="line"><span class="number">5</span>.  初始化Git仓库 </span><br><span class="line"></span><br><span class="line">   先选定一个目录作为Git仓库，假定是`/srv/sample.git`，在`/srv`目录下输入命令：</span><br></pre></td></tr></table></figure>
  sudo git init --bare sample.git
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以`.git`结尾。然后，把owner改为`git`：</span><br></pre></td></tr></table></figure>
+ <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以`.git`结尾。然后，把owner改为`git`：</span><br></pre></td></tr></table></figure>
  sudo chown -R git:git sample.git
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">6. 第五步，禁用shell登录：</span><br><span class="line"></span><br><span class="line">   出于安全考虑，第二步创建的git用户不允许登录shell，这可以通过编辑`/etc/passwd`文件完成。找到类似下面的一行：</span><br></pre></td></tr></table></figure>
+ <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">6</span>. 第五步，禁用<span class="keyword">shell</span><span class="bash">登录：</span></span><br><span class="line"></span><br><span class="line">   出于安全考虑，第二步创建的git用户不允许登录<span class="keyword">shell</span><span class="bash">，这可以通过编辑`/etc/passwd`文件完成。找到类似下面的一行：</span></span><br></pre></td></tr></table></figure>
  git:x:1001:1001:,,,:/home/git:/bin/bash
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">改为：</span><br></pre></td></tr></table></figure>
  git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   这样，`git`用户可以正常通过ssh使用git，但无法登录shell，因为我们为`git`用户指定的`git-shell`每次一登录就自动退出</span><br><span class="line"></span><br><span class="line">7. 第六步，克隆远程仓库：</span><br><span class="line"></span><br><span class="line">   现在，可以通过`git clone`命令克隆远程仓库了，在各自的电脑上运行：</span><br></pre></td></tr></table></figure>
+ <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   这样，`git`用户可以正常通过ssh使用git，但无法登录shell，因为我们为`git`用户指定的`git-shell`每次一登录就自动退出</span><br><span class="line"></span><br><span class="line"><span class="number">7</span>. 第六步，克隆远程仓库：</span><br><span class="line"></span><br><span class="line">   现在，可以通过`git clone`命令克隆远程仓库了，在各自的电脑上运行：</span><br></pre></td></tr></table></figure>
  $ git clone git@server:/srv/sample.git
  Cloning into &apos;sample&apos;...
  warning: You appear to have cloned an empty repository.
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">8. 提示错误及解决方案</span><br><span class="line"></span><br><span class="line">   错误1</span><br></pre></td></tr></table></figure>
+ <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">8.</span> 提示错误及解决方案</span><br><span class="line"></span><br><span class="line">   错误<span class="number">1</span></span><br></pre></td></tr></table></figure>
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -455,7 +481,7 @@
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.2
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
   </div>
 
         
@@ -481,7 +507,7 @@
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
 
@@ -511,5 +537,7 @@
 
   
 
+  
 </body>
 </html>
+

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Git1.初始化git init 2.提交文件git add 文件  [后面可以跟很多个文件] *git commit -m “本次修改的注释” * 一次 git commit 可以一次性提交所有的git add git分为暂存区、工作区、版本区 一个 git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git">
+<meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;2019&#x2F;10&#x2F;22&#x2F;git&#x2F;index.html">
+<meta property="og:site_name" content="SuperAI">
+<meta property="og:description" content="Git1.初始化git init 2.提交文件git add 文件  [后面可以跟很多个文件] *git commit -m “本次修改的注释” * 一次 git commit 可以一次性提交所有的git add git分为暂存区、工作区、版本区 一个 git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-22T09:11:10.058Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://59.110.165.2/2019/10/22/git/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>git | SuperAI</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SuperAI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">NicoNicoNi</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://59.110.165.2/2019/10/22/git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WJS">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuperAI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-22 17:11:10" itemprop="dateCreated datePublished" datetime="2019-10-22T17:11:10+08:00">2019-10-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h4 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h4><p>git init</p>
+<h4 id="2-提交文件"><a href="#2-提交文件" class="headerlink" title="2.提交文件"></a>2.提交文件</h4><p><strong>git add</strong> 文件  [后面可以跟很多个文件]</p>
+<p>*<em>git commit -m “本次修改的注释” *</em></p>
+<p>一次 git commit 可以一次性提交所有的git add</p>
+<p>git分为暂存区、工作区、版本区</p>
+<p>一个 <code>git add</code>命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。 </p>
+<p>因此每次修改后如果不使用git add，那么这次修改就不会被加入暂存区，自然不会被提交。</p>
+<p> <strong><code>git diff HEAD -- readme.txt</code></strong>命令可以查看工作区和版本库里面最新版本的区别 </p>
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h4><p> *<em>git checkout – file *</em>   直接丢弃工作区的修改 </p>
+<p> *<em>git reset HEAD  file *</em>  将修改从暂存区还原成工作区</p>
+<h4 id="3-查看当前文件系统情况"><a href="#3-查看当前文件系统情况" class="headerlink" title="3. 查看当前文件系统情况"></a>3. 查看当前文件系统情况</h4><p>*<em>git status *</em>，可以显示出当前文件系统的情况，是否有修改，以及是否准备好上传修改等情况</p>
+<p><strong>git diff</strong> 显示当前文件的增删详细情况</p>
+<h4 id="4-版本管理"><a href="#4-版本管理" class="headerlink" title="4.版本管理"></a>4.版本管理</h4><p> <strong>git log</strong> 可以看到目前所有的版本，head 指向的版本就是当前版本 。</p>
+<p><strong>git log –pretty=oneline</strong> 可以在一行显示信息</p>
+<p><strong>版本回退与前进</strong></p>
+<p> <strong>git reset –hard commit_id</strong> </p>
+<p><strong>版本回退</strong>也可以按这种方式来写： 在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交，上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个<code>^</code>比较容易数不过来，所以写成<code>HEAD~100</code> </p>
+<p><strong>前进到”未来的某个版本“</strong>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本 </p>
+<h4 id="5-删除文件"><a href="#5-删除文件" class="headerlink" title="5.删除文件"></a>5.删除文件</h4><ol>
+<li>直接 rm -rf 删除了文件，git会得知该文件已被删除。</li>
+<li><strong>删除</strong>：git rm file，文件将从git版本库中删除，同时提交一下修改，那么文件就会从电脑和git库中消失。</li>
+<li><strong>恢复</strong>：git checkout – file 把误删的文件恢复到最新版本 </li>
+</ol>
+<h4 id="6-远程仓库"><a href="#6-远程仓库" class="headerlink" title="6.远程仓库"></a>6.远程仓库</h4><ol>
+<li>要关联一个远程库，使用命令<code>git remote add origin git@server-name:path/repo-name.git</code>；</li>
+<li>关联后，使用命令<code>git push -u origin master</code>第一次推送master分支的所有内容；</li>
+<li>此后，每次本地提交后，只要有必要，就可以使用命令<code>git push origin master</code>推送最新修改</li>
+<li>要克隆一个仓库，首先必须知道仓库的地址，然后使用<code>git clone</code>命令克隆。Git支持多种协议，包括<code>https</code>，但通过<code>ssh</code>支持的原生<code>git</code>协议速度最快。</li>
+<li>查看远程库信息，使用<code>git remote -v</code>；</li>
+<li>本地新建的分支如果不推送到远程，对其他人就是不可见的；</li>
+<li>从本地推送分支，使用<code>git push origin branch-name</code>，如果推送失败，先用<code>git pull</code>抓取远程的新提交；</li>
+<li>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</li>
+<li>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code>；</li>
+<li>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突。</li>
+</ol>
+<h4 id="7-git分支"><a href="#7-git分支" class="headerlink" title="7.git分支"></a>7.git分支</h4><p>Git鼓励大量使用分支：</p>
+<p>查看分支：<code>git branch</code></p>
+<p>创建分支：<code>git branch name</code></p>
+<p>切换分支：<code>git checkout name</code>或者<code>git switch name</code></p>
+<p>创建+切换分支：<code>git checkout -b</code>或者<code>git switch -c</code></p>
+<p>合并某分支到当前分支：<code>git merge</code></p>
+<p>删除分支：<code>git branch -d</code></p>
+<p>开发一个新feature，最好新建一个分支；</p>
+<p>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D</code>强行删除</p>
+<h4 id="7-1分支冲突"><a href="#7-1分支冲突" class="headerlink" title="7.1分支冲突"></a>7.1分支冲突</h4><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
+<p>解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。</p>
+<p>用<code>git log --graph --pretty=oneline --abbrev-commit</code>命令可以看到分支合并图</p>
+<h4 id="8-bug分支"><a href="#8-bug分支" class="headerlink" title="8.bug分支"></a>8.bug分支</h4><p>当手头工作没有完成时，先把工作现场<code>git stash</code>一下，然后去修复bug，修复后，再<code>git stash pop</code>，回到工作现场；</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当有多次现场保存时，按：</span><br><span class="line">git stash apply <span class="symbol">stash@</span>&#123;<span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在master分支上修复的bug，想要合并到当前dev分支，可以用<code>git cherry-pick</code>命令，把bug提交的修改“复制”到当前分支，避免重复劳动。</p>
+<h4 id="9-多人协作"><a href="#9-多人协作" class="headerlink" title="9.多人协作"></a>9.多人协作</h4><p>因此，多人协作的工作模式通常是这样：</p>
+<ol>
+<li>首先，可以试图用<code>git push origin</code>推送自己的修改；</li>
+<li>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；</li>
+<li>如果合并有冲突，则解决冲突，并在本地提交；</li>
+<li>没有冲突或者解决掉冲突后，再用<code>git push origin</code>推送就能成功！</li>
+</ol>
+<p>如果<code>git pull</code>提示<code>no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream-to  origin/</code>。</p>
+<h4 id="10-分支历史简化"><a href="#10-分支历史简化" class="headerlink" title="10.分支历史简化"></a>10.分支历史简化</h4><ul>
+<li>ebase操作可以把本地未push的分叉提交历史整理成直线；</li>
+<li>rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。</li>
+</ul>
+<h4 id="11-git标签"><a href="#11-git标签" class="headerlink" title="11.git标签"></a>11.git标签</h4><ul>
+<li><p>列出标签</p>
+<p>$ git tag # 在控制台打印出当前仓库的所有标签<br>$ git tag -l ‘v0.1.*’ # 搜索符合模式的标签</p>
+</li>
+<li><p>打标签</p>
+<p>git标签分为两种类型：轻量标签和附注标签。轻量标签是指向提交对象的引用，附注标签则是仓库中的一个独立对象。建议使用附注标签。<br># 创建轻量标签<br>$ git tag name -light</p>
+</li>
+<li><p>创建附注标签<br>$ git tag -a name -m “0.1.2版本”</p>
+</li>
+<li><p>切换到标签</p>
+</li>
+</ul>
+<p>与切换分支命令相同，用<code>git checkout [tagname]</code></p>
+<ul>
+<li><p>查看标签信息<br>用<code>git show</code>命令可以查看标签的版本信息：<br>$ git show v0.1.2</p>
+</li>
+<li><p>删除标签</p>
+<p>误打或需要修改标签时，需要先将标签删除，再打新标签</p>
+<p>  git tag -d name # 删除标签 </p>
+</li>
+</ul>
+<h4 id="12-标签推送"><a href="#12-标签推送" class="headerlink" title="12.标签推送"></a>12.标签推送</h4><ul>
+<li>命令<code>git push origin</code>可以推送一个本地标签；</li>
+<li>命令<code>git push origin --tags</code>可以推送全部未推送过的本地标签；</li>
+<li>命令<code>git tag -d</code>可以删除一个本地标签；</li>
+<li>命令<code>git push origin :refs/tags/</code>可以删除一个远程标签。</li>
+</ul>
+<h4 id="13-忽略文件"><a href="#13-忽略文件" class="headerlink" title="13.忽略文件"></a>13.忽略文件</h4><ul>
+<li><p>忽略某些文件时，需要编写<code>.gitignore</code>；</p>
+</li>
+<li><pre><code> 已忽略文件强制上传 git add -f App.class
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `.gitignore`文件本身要放到版本库里，并且可以对`.gitignore`做版本管理！</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### <span class="number">14</span>.git别名</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+ git config --global alias.st status
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   每个仓库的Git配置文件都放在<span class="code">`.git/config`</span>文件中 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">#### 15.搭建git服务器</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1. </span>安装git</span><br><span class="line"></span><br><span class="line">   sudo apt-get install git</span><br><span class="line"></span><br><span class="line"><span class="bullet">2. </span>新建一个git用户，并给予git用户sudo权限， 用来运行<span class="code">`git`</span>服务</span><br></pre></td></tr></table></figure>
+ adduser git
+ sudo  usermod -aG sudo git
+ <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">3.</span> 切换到git用户 ,注意以下操作若无提示，均需要在git用户下执行</span><br></pre></td></tr></table></figure>
+ su git
+ <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">4</span>. 创建证书登录</span><br><span class="line"></span><br><span class="line">   收集所有需要登录的用户的公钥，就是他们自己的`id_rsa.pub`文件，把所有公钥导入到`/home/git/.ssh/authorized_keys`文件里，一行一个。 </span><br><span class="line"></span><br><span class="line"><span class="number">5</span>.  初始化Git仓库 </span><br><span class="line"></span><br><span class="line">   先选定一个目录作为Git仓库，假定是`/srv/sample.git`，在`/srv`目录下输入命令：</span><br></pre></td></tr></table></figure>
+ sudo git init --bare sample.git
+ <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Git就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以`.git`结尾。然后，把owner改为`git`：</span><br></pre></td></tr></table></figure>
+ sudo chown -R git:git sample.git
+ <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">6</span>. 第五步，禁用<span class="keyword">shell</span><span class="bash">登录：</span></span><br><span class="line"></span><br><span class="line">   出于安全考虑，第二步创建的git用户不允许登录<span class="keyword">shell</span><span class="bash">，这可以通过编辑`/etc/passwd`文件完成。找到类似下面的一行：</span></span><br></pre></td></tr></table></figure>
+ git:x:1001:1001:,,,:/home/git:/bin/bash
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">改为：</span><br></pre></td></tr></table></figure>
+ git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+ <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   这样，`git`用户可以正常通过ssh使用git，但无法登录shell，因为我们为`git`用户指定的`git-shell`每次一登录就自动退出</span><br><span class="line"></span><br><span class="line"><span class="number">7</span>. 第六步，克隆远程仓库：</span><br><span class="line"></span><br><span class="line">   现在，可以通过`git clone`命令克隆远程仓库了，在各自的电脑上运行：</span><br></pre></td></tr></table></figure>
+ $ git clone git@server:/srv/sample.git
+ Cloning into &apos;sample&apos;...
+ warning: You appear to have cloned an empty repository.
+ <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">8.</span> 提示错误及解决方案</span><br><span class="line"></span><br><span class="line">   错误<span class="number">1</span></span><br></pre></td></tr></table></figure>
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">解决方案：</span><br></pre></td></tr></table></figure>
+ 将本地的 .ssh/known_hosts 文件删除，并重新git clone即可</code></pre></li>
+</ul>
+<h4 id="备注—更新git"><a href="#备注—更新git" class="headerlink" title="备注—更新git"></a>备注—更新git</h4><p>sudo add-apt-repository ppa:git-core/ppa</p>
+<p>sudo apt-get update</p>
+<p>sudo apt-get install git</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/08/19/images/colorUI%E4%BD%BF%E7%94%A8/" rel="next" title="images/colorUI使用">
+                  <i class="fa fa-chevron-left"></i> images/colorUI使用
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/24/colorUI%E4%BD%BF%E7%94%A8/" rel="prev" title="colorUI使用">
+                  colorUI使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">1.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-初始化"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-提交文件"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.提交文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1"><span class="nav-number">1.0.3.</span> <span class="nav-text">2.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-查看当前文件系统情况"><span class="nav-number">1.0.4.</span> <span class="nav-text">3. 查看当前文件系统情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-版本管理"><span class="nav-number">1.0.5.</span> <span class="nav-text">4.版本管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-删除文件"><span class="nav-number">1.0.6.</span> <span class="nav-text">5.删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-远程仓库"><span class="nav-number">1.0.7.</span> <span class="nav-text">6.远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-git分支"><span class="nav-number">1.0.8.</span> <span class="nav-text">7.git分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1分支冲突"><span class="nav-number">1.0.9.</span> <span class="nav-text">7.1分支冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-bug分支"><span class="nav-number">1.0.10.</span> <span class="nav-text">8.bug分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-多人协作"><span class="nav-number">1.0.11.</span> <span class="nav-text">9.多人协作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-分支历史简化"><span class="nav-number">1.0.12.</span> <span class="nav-text">10.分支历史简化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-git标签"><span class="nav-number">1.0.13.</span> <span class="nav-text">11.git标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-标签推送"><span class="nav-number">1.0.14.</span> <span class="nav-text">12.标签推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-忽略文件"><span class="nav-number">1.0.15.</span> <span class="nav-text">13.忽略文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备注—更新git"><span class="nav-number">1.0.16.</span> <span class="nav-text">备注—更新git</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="WJS"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">WJS</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WJS</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
+

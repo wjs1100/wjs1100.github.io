@@ -50,14 +50,21 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="SuperAI">
-<meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;archives&#x2F;2019&#x2F;10&#x2F;index.html">
+  <meta name="description" content="网络层函数1.relu relu函数将所有的负值进行归零 2.sigmoid 概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值 API函数1.network.summary() 输出网络的结构 2.verbose() （1）fit 中的 verbose verbose：日志显示 verbose = 0 为不在标准输出流输出日志信息 verbose = 1 为输出进度条记录 verb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数">
+<meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;2019&#x2F;07&#x2F;29&#x2F;%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="SuperAI">
+<meta property="og:description" content="网络层函数1.relu relu函数将所有的负值进行归零 2.sigmoid 概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值 API函数1.network.summary() 输出网络的结构 2.verbose() （1）fit 中的 verbose verbose：日志显示 verbose = 0 为不在标准输出流输出日志信息 verbose = 1 为输出进度条记录 verb">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;11476842-e2e48d731f8a6b3e.PNG?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1000&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;11476842-05b5bf4806981c65.PNG?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;581&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;11476842-963c28b0ff6dfd90.PNG?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;483&#x2F;format&#x2F;webp">
+<meta property="og:updated_time" content="2019-07-29T10:38:34.328Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;11476842-e2e48d731f8a6b3e.PNG?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1000&#x2F;format&#x2F;webp">
 
-<link rel="canonical" href="http://59.110.165.2/archives/2019/10/">
+<link rel="canonical" href="http://59.110.165.2/2019/07/29/%E5%87%BD%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -65,13 +72,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>归档 | SuperAI</title>
+  <title>函数 | SuperAI</title>
   
 
 
@@ -193,69 +200,106 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 10 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://59.110.165.2/2019/07/29/%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WJS">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuperAI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          函数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-29 18:38:34" itemprop="dateCreated datePublished" datetime="2019-07-29T18:38:34+08:00">2019-07-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-10-24T15:05:49+08:00"
-              content="2019-10-24">
-          10-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/10/24/colorUI%E4%BD%BF%E7%94%A8/" itemprop="url">
-            <span itemprop="name">colorUI使用</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-10-22T17:11:10+08:00"
-              content="2019-10-22">
-          10-22
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/10/22/git/" itemprop="url">
-            <span itemprop="name">git</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+        <h4 id="网络层函数"><a href="#网络层函数" class="headerlink" title="网络层函数"></a>网络层函数</h4><p>1.<strong>relu</strong></p>
+<p>relu函数将所有的负值进行归零</p>
+<p>2.<strong>sigmoid</strong></p>
+<p>概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值</p>
+<h4 id="API函数"><a href="#API函数" class="headerlink" title="API函数"></a>API函数</h4><p>1.<strong>network.summary()</strong></p>
+<p>输出网络的结构</p>
+<p>2.<strong>verbose()</strong></p>
+<p>（1）<strong>fit 中的 verbose</strong></p>
+<p>verbose：日志显示</p>
+<p>verbose = 0 为不在标准输出流输出日志信息</p>
+<p>verbose = 1 为输出进度条记录</p>
+<p>verbose = 2 为每个epoch输出一行记录</p>
+<p>注意： 默认为 1</p>
+<p>verbose = 1：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11476842-e2e48d731f8a6b3e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>
+<p>verbose = 2：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11476842-05b5bf4806981c65.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/581/format/webp" alt="img"></p>
+<p>（2）<strong>evaluate 中的 verbose</strong></p>
+<p>verbose：日志显示</p>
+<p>verbose = 0 为不在标准输出流输出日志信息</p>
+<p>verbose = 1 为输出进度条记录</p>
+<p>注意： 只能取 0 和 1；默认为 1</p>
+<p>verbose = 1：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11476842-963c28b0ff6dfd90.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/483/format/webp" alt="img"></p>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/07/29/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89---%E6%95%B0%E6%8D%AE%E6%A0%87%E5%87%86%E5%8C%96/" rel="next" title="数学知识（一）---数据标准化">
+                  <i class="fa fa-chevron-left"></i> 数学知识（一）---数据标准化
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/08/13/Windows%E4%B8%8BNode.js%E4%B8%8Enpm%E7%9A%84%E5%AE%89%E8%A3%85/" rel="prev" title="Windows下Node.js与npm的安装">
+                  Windows下Node.js与npm的安装 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -284,6 +328,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络层函数"><span class="nav-number">1.</span> <span class="nav-text">网络层函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API函数"><span class="nav-number">2.</span> <span class="nav-text">API函数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

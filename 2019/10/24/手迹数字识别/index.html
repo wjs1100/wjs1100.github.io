@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="手迹数字识别环境：121、windows下的Ubuntu子系统为工作系统，安装windows terminal为交互界面2、在swl中安装python、tensorflower、keras、jupyter notebook  #####　代码： 一、导入函数 123456from keras.datasets import mnistfrom keras import modelsfrom ker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手迹数字识别">
+<meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;2019&#x2F;10&#x2F;24&#x2F;%E6%89%8B%E8%BF%B9%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB&#x2F;index.html">
+<meta property="og:site_name" content="SuperAI">
+<meta property="og:description" content="手迹数字识别环境：121、windows下的Ubuntu子系统为工作系统，安装windows terminal为交互界面2、在swl中安装python、tensorflower、keras、jupyter notebook  #####　代码： 一、导入函数 123456from keras.datasets import mnistfrom keras import modelsfrom ker">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-29T05:05:35.652Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://59.110.165.2/2019/10/24/%E6%89%8B%E8%BF%B9%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>手迹数字识别 | SuperAI</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SuperAI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://59.110.165.2/2019/10/24/%E6%89%8B%E8%BF%B9%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WJS">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SuperAI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          手迹数字识别
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-24 11:58:57" itemprop="dateCreated datePublished" datetime="2019-10-24T11:58:57+08:00">2019-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-29 13:05:35" itemprop="dateModified" datetime="2019-07-29T13:05:35+08:00">2019-07-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="手迹数字识别"><a href="#手迹数字识别" class="headerlink" title="手迹数字识别"></a>手迹数字识别</h3><h5 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、windows下的Ubuntu子系统为工作系统，安装windows terminal为交互界面</span><br><span class="line">2、在swl中安装python、tensorflower、keras、jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<p>#####　代码：</p>
+<p><strong>一、导入函数</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> layers</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> utils</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential <span class="comment"># 导入序贯模型</span></span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense <span class="comment"># 导入全连接层</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>二、下载数据</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(train_images , train_labels) , (test_images , test_labels) = mnist.load_data()</span><br></pre></td></tr></table></figure>
+
+<p><strong>三、转化为2D张量和归一化</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_images = train_images.reshape(<span class="number">60000</span> , <span class="number">28</span>*<span class="number">28</span>) <span class="comment"># 转化为2D张量</span></span><br><span class="line">train_images = train_images.astype(<span class="string">'float32'</span>) / <span class="number">255</span><span class="comment"># 归一化</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test_images = test_images.reshape(<span class="number">10000</span> , <span class="number">28</span>*<span class="number">28</span>)</span><br><span class="line">test_images = test_images.astype(<span class="string">'float32'</span>) / <span class="number">255</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>四、标签分类编码处理</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_labels = utils.to_categorical(train_labels , <span class="number">10</span>)</span><br><span class="line">test_labels = utils.to_categorical(test_labels , <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>五、构建网络</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network = models.Sequential() <span class="comment"># 构建网络框架</span></span><br><span class="line">network.add(layers.Dense(<span class="number">512</span> , activation=<span class="string">'relu'</span> , input_shape=(<span class="number">784</span> ,)))</span><br><span class="line">network.add(layers.Dense(<span class="number">256</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line">network.add(layers.Dense(<span class="number">10</span> , activation=<span class="string">'softmax'</span>))</span><br><span class="line">network.summary() <span class="comment"># 输出现在的网络信息</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;Layer (type)                 Output Shape              Param #   </span><br><span class="line">&gt;=================================================================</span><br><span class="line">&gt;dense_4 (Dense)              (None, 512)               401920    </span><br><span class="line">&gt;_________________________________________________________________</span><br><span class="line">&gt;dense_5 (Dense)              (None, 256)               131328    </span><br><span class="line">&gt;_________________________________________________________________</span><br><span class="line">&gt;dense_6 (Dense)              (None, 10)                2570      </span><br><span class="line">&gt;=================================================================</span><br><span class="line">&gt;Total params: 535,818</span><br><span class="line">&gt;Trainable params: 535,818</span><br><span class="line">&gt;Non-trainable params: 0</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>六、网络编译</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">network.compile(optimizer=<span class="string">'rmsprop'</span>,<span class="comment"># 优化器--rmsprop</span></span><br><span class="line">                loss=<span class="string">'categorical_crossentropy'</span>, <span class="comment"># 损失函数</span></span><br><span class="line">                metrics=[<span class="string">'accuracy'</span>]) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>七、循环训练</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">network.fit(train_images , train_labels , epochs=<span class="number">15</span> , batch_size=<span class="number">512</span>)</span><br><span class="line"><span class="comment"># epochs 训练迭代次数</span></span><br><span class="line"><span class="comment"># batch_size 每次训练批数</span></span><br><span class="line"><span class="comment"># 每轮训练118次，总共1757次梯度更新</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt;Epoch 1/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 38us/step - loss: 0.3802 - acc: 0.8845</span><br><span class="line">&gt;Epoch 2/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 36us/step - loss: 0.1375 - acc: 0.9581</span><br><span class="line">&gt;Epoch 3/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0874 - acc: 0.9733</span><br><span class="line">&gt;Epoch 4/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 39us/step - loss: 0.0606 - acc: 0.9805</span><br><span class="line">&gt;Epoch 5/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 36us/step - loss: 0.0438 - acc: 0.9867</span><br><span class="line">&gt;Epoch 6/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0321 - acc: 0.9899</span><br><span class="line">&gt;Epoch 7/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 34us/step - loss: 0.0242 - acc: 0.9927</span><br><span class="line">&gt;Epoch 8/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 34us/step - loss: 0.0188 - acc: 0.9942</span><br><span class="line">&gt;Epoch 9/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0141 - acc: 0.9953</span><br><span class="line">&gt;Epoch 10/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0115 - acc: 0.9965</span><br><span class="line">&gt;Epoch 11/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0094 - acc: 0.9970</span><br><span class="line">&gt;Epoch 12/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0078 - acc: 0.9977</span><br><span class="line">&gt;Epoch 13/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 34us/step - loss: 0.0067 - acc: 0.9979</span><br><span class="line">&gt;Epoch 14/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 34us/step - loss: 0.0054 - acc: 0.9984</span><br><span class="line">&gt;Epoch 15/15</span><br><span class="line">&gt;60000/60000 [==============================] - 2s 35us/step - loss: 0.0049 - acc: 0.9987</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>八、检测</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">score = network.evaluate(test_images , test_labels)</span><br><span class="line">print(<span class="string">"loss:"</span>,score[<span class="number">0</span>])</span><br><span class="line">print(<span class="string">"accu:"</span>,score[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>10000/10000 [==============================] - 0s 35us/step<br>loss: 0.08005950556326134<br>accu: 0.9794</p>
+</blockquote>
+<h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><p>1、在训练时要注意数据的提前预处理，是得数据成为可以进入网络的数据结构</p>
+<p>2、随着训练批数的增大以及训练轮次的增加，总重得到的网络识别的准确率会随之上升，从0.97上升到0.983。但随着增加，loss值会不断减小，但是准确率不会再增加，会再0.98附近不在上涨。</p>
+<blockquote>
+<p>猜想：网络结构简单，训练批次的增加确实会增加准确率。但是效果并不会很明显，这也许代表着对于网络，结构的合理性也许更加重要。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/24/%E8%B7%AF%E9%80%8F%E7%A4%BE/" rel="next" title="路透社">
+                  <i class="fa fa-chevron-left"></i> 路透社
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/24/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89---%E6%95%B0%E6%8D%AE%E6%A0%87%E5%87%86%E5%8C%96/" rel="prev" title="数学知识（一）---数据标准化">
+                  数学知识（一）---数据标准化 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#手迹数字识别"><span class="nav-number">1.</span> <span class="nav-text">手迹数字识别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#环境："><span class="nav-number">1.0.1.</span> <span class="nav-text">环境：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结"><span class="nav-number">1.0.2.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="WJS"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">WJS</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WJS</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

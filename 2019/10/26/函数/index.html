@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -27,7 +28,7 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -38,7 +39,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -50,12 +51,12 @@
   };
 </script>
 
-  <meta name="description" content="网络层函数1.relu relu函数将所有的负值进行归零 2.sigmoid 概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值 API函数1.network.summary() 输出网络的结构 2.verbose() （1）fit 中的 verbose verbose：日志显示 verbose = 0 为不在标准输出流输出日志信息 verbose = 1 为输出进度条记录 verb">
+  <meta name="description" content="网络层函数1.relurelu函数将所有的负值进行归零2.sigmoid概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值API函数1.network.summary()输出网络的结构2.verbose()（1）fit 中的 verboseverbose：日志显示verbose = 0 为不在标准输出流输出日志信息">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数">
 <meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;2019&#x2F;10&#x2F;26&#x2F;%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="SuperAI">
-<meta property="og:description" content="网络层函数1.relu relu函数将所有的负值进行归零 2.sigmoid 概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值 API函数1.network.summary() 输出网络的结构 2.verbose() （1）fit 中的 verbose verbose：日志显示 verbose = 0 为不在标准输出流输出日志信息 verbose = 1 为输出进度条记录 verb">
+<meta property="og:description" content="网络层函数1.relurelu函数将所有的负值进行归零2.sigmoid概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值API函数1.network.summary()输出网络的结构2.verbose()（1）fit 中的 verboseverbose：日志显示verbose = 0 为不在标准输出流输出日志信息">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;images&#x2F;2.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;images&#x2F;1.jpg">
@@ -179,9 +180,34 @@
     <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -208,7 +234,7 @@
     <link itemprop="mainEntityOfPage" href="http://59.110.165.2/2019/10/26/%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mmn.png">
       <meta itemprop="name" content="WJS">
       <meta itemprop="description" content="">
     </span>
@@ -242,16 +268,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="网络层函数"><a href="#网络层函数" class="headerlink" title="网络层函数"></a>网络层函数</h4><p>1.<strong>relu</strong></p>
-<p>relu函数将所有的负值进行归零</p>
-<p>2.<strong>sigmoid</strong></p>
-<p>概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值</p>
-<h4 id="API函数"><a href="#API函数" class="headerlink" title="API函数"></a>API函数</h4><p>1.<strong>network.summary()</strong></p>
-<p>输出网络的结构</p>
-<p>2.<strong>verbose()</strong></p>
-<p>（1）<strong>fit 中的 verbose</strong></p>
-<p>verbose：日志显示</p>
-<p>verbose = 0 为不在标准输出流输出日志信息</p>
+        <h4 id="网络层函数"><a href="#网络层函数" class="headerlink" title="网络层函数"></a>网络层函数</h4><p>1.<strong>relu</strong></p><p>relu函数将所有的负值进行归零</p><p>2.<strong>sigmoid</strong></p><p>概率函数，将人与i之压缩到[0，1]区间中，输出值可以看成概率值</p><h4 id="API函数"><a href="#API函数" class="headerlink" title="API函数"></a>API函数</h4><p>1.<strong>network.summary()</strong></p><p>输出网络的结构</p><p>2.<strong>verbose()</strong></p><p>（1）<strong>fit 中的 verbose</strong></p><p>verbose：日志显示</p><p>verbose = 0 为不在标准输出流输出日志信息</p><a id="more"></a>
+
+
+
+
+
+
+
+
+
 <p>verbose = 1 为输出进度条记录</p>
 <p>verbose = 2 为每个epoch输出一行记录</p>
 <p>注意： 默认为 1</p>
@@ -272,6 +298,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>WJS
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://59.110.165.2/2019/10/26/%E5%87%BD%E6%95%B0/" title="函数">http://59.110.165.2/2019/10/26/%E5%87%BD%E6%95%B0/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
 
@@ -279,8 +322,8 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/10/26/Windows%E4%B8%8BNode.js%E4%B8%8Enpm%E7%9A%84%E5%AE%89%E8%A3%85/" rel="next" title="Windows下Node.js与npm的安装">
-                  <i class="fa fa-chevron-left"></i> Windows下Node.js与npm的安装
+                <a href="/2019/10/26/pytho/" rel="next" title="pytho">
+                  <i class="fa fa-chevron-left"></i> pytho
                 </a>
             </div>
 
@@ -335,7 +378,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="site-author-image" itemprop="image" alt="WJS"
-    src="/images/avatar.gif">
+    src="/images/mmn.png">
   <p class="site-author-name" itemprop="name">WJS</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -402,12 +445,15 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
+  <script defer src="/lib/three/three.min.js"></script>
 
 
   
@@ -416,6 +462,8 @@
 
 
 
+
+  <script src="/js/local-search.js"></script>
 
 
 

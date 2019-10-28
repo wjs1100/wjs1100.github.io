@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -27,7 +28,7 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -38,7 +39,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -50,12 +51,12 @@
   };
 </script>
 
-  <meta name="description" content="Git1.初始化git init 2.提交文件git add 文件  [后面可以跟很多个文件] *git commit -m “本次修改的注释” * 一次 git commit 可以一次性提交所有的git add git分为暂存区、工作区、版本区 一个 git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。">
+  <meta name="description" content="Git1.初始化git init2.提交文件git add 文件  [后面可以跟很多个文件]*git commit -m “本次修改的注释” *一次 git commit 可以一次性提交所有的git addgit分为暂存区、工作区、版本区一个 git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git">
 <meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;2019&#x2F;10&#x2F;26&#x2F;git&#x2F;index.html">
 <meta property="og:site_name" content="SuperAI">
-<meta property="og:description" content="Git1.初始化git init 2.提交文件git add 文件  [后面可以跟很多个文件] *git commit -m “本次修改的注释” * 一次 git commit 可以一次性提交所有的git add git分为暂存区、工作区、版本区 一个 git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。">
+<meta property="og:description" content="Git1.初始化git init2.提交文件git add 文件  [后面可以跟很多个文件]*git commit -m “本次修改的注释” *一次 git commit 可以一次性提交所有的git addgit分为暂存区、工作区、版本区一个 git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-26T03:17:42.760Z">
 <meta name="twitter:card" content="summary">
@@ -175,9 +176,34 @@
     <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -204,7 +230,7 @@
     <link itemprop="mainEntityOfPage" href="http://59.110.165.2/2019/10/26/git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mmn.png">
       <meta itemprop="name" content="WJS">
       <meta itemprop="description" content="">
     </span>
@@ -238,12 +264,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h4 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h4><p>git init</p>
-<h4 id="2-提交文件"><a href="#2-提交文件" class="headerlink" title="2.提交文件"></a>2.提交文件</h4><p><strong>git add</strong> 文件  [后面可以跟很多个文件]</p>
-<p>*<em>git commit -m “本次修改的注释” *</em></p>
-<p>一次 git commit 可以一次性提交所有的git add</p>
-<p>git分为暂存区、工作区、版本区</p>
-<p>一个 <code>git add</code>命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。 </p>
+        <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h4 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h4><p>git init</p><h4 id="2-提交文件"><a href="#2-提交文件" class="headerlink" title="2.提交文件"></a>2.提交文件</h4><p><strong>git add</strong> 文件  [后面可以跟很多个文件]</p><p>*<em>git commit -m “本次修改的注释” *</em></p><p>一次 git commit 可以一次性提交所有的git add</p><p>git分为暂存区、工作区、版本区</p><p>一个 <code>git add</code>命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。 </p><a id="more"></a>
+
+
+
+
+
 <p>因此每次修改后如果不使用git add，那么这次修改就不会被加入暂存区，自然不会被提交。</p>
 <p> <strong><code>git diff HEAD -- readme.txt</code></strong>命令可以查看工作区和版本库里面最新版本的区别 </p>
 <h4 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h4><p> *<em>git checkout – file *</em>   直接丢弃工作区的修改 </p>
@@ -367,6 +393,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>WJS
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://59.110.165.2/2019/10/26/git/" title="git">http://59.110.165.2/2019/10/26/git/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
 
@@ -430,7 +473,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="site-author-image" itemprop="image" alt="WJS"
-    src="/images/avatar.gif">
+    src="/images/mmn.png">
   <p class="site-author-name" itemprop="name">WJS</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -497,12 +540,15 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
+  <script defer src="/lib/three/three.min.js"></script>
 
 
   
@@ -511,6 +557,8 @@
 
 
 
+
+  <script src="/js/local-search.js"></script>
 
 
 

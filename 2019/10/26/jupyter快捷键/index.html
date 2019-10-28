@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -27,7 +28,7 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -38,7 +39,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -50,12 +51,12 @@
   };
 </script>
 
-  <meta name="description" content="Jupyter笔记本有两种不同的键盘输入模式. 编辑模式允许您将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示 命令模式将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。 命令行模式(按 Esc 生效)编辑快捷键F: 查找并且替换 Ctrl-Shift-F: 打开命令配置 Ctrl-Shift-P: 打开命令配置 Enter: 进入编辑模式 P: 打">
+  <meta name="description" content="Jupyter笔记本有两种不同的键盘输入模式. 编辑模式允许您将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示 命令模式将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。命令行模式(按 Esc 生效)编辑快捷键F: 查找并且替换Ctrl-Shift-F: 打开命令配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jupyter快捷键">
 <meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;2019&#x2F;10&#x2F;26&#x2F;jupyter%E5%BF%AB%E6%8D%B7%E9%94%AE&#x2F;index.html">
 <meta property="og:site_name" content="SuperAI">
-<meta property="og:description" content="Jupyter笔记本有两种不同的键盘输入模式. 编辑模式允许您将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示 命令模式将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。 命令行模式(按 Esc 生效)编辑快捷键F: 查找并且替换 Ctrl-Shift-F: 打开命令配置 Ctrl-Shift-P: 打开命令配置 Enter: 进入编辑模式 P: 打">
+<meta property="og:description" content="Jupyter笔记本有两种不同的键盘输入模式. 编辑模式允许您将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示 命令模式将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。命令行模式(按 Esc 生效)编辑快捷键F: 查找并且替换Ctrl-Shift-F: 打开命令配置">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-26T03:17:42.761Z">
 <meta name="twitter:card" content="summary">
@@ -175,9 +176,34 @@
     <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -204,7 +230,7 @@
     <link itemprop="mainEntityOfPage" href="http://59.110.165.2/2019/10/26/jupyter%E5%BF%AB%E6%8D%B7%E9%94%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mmn.png">
       <meta itemprop="name" content="WJS">
       <meta itemprop="description" content="">
     </span>
@@ -238,9 +264,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Jupyter笔记本有两种不同的键盘输入模式. <strong>编辑模式</strong>允许您将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示 <strong>命令模式</strong>将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。</p>
-<h4 id="命令行模式-按-Esc-生效-编辑快捷键"><a href="#命令行模式-按-Esc-生效-编辑快捷键" class="headerlink" title="命令行模式(按 Esc 生效)编辑快捷键"></a>命令行模式(按 Esc 生效)编辑快捷键</h4><p>F: 查找并且替换</p>
-<p>Ctrl-Shift-F: 打开命令配置</p>
+        <p>Jupyter笔记本有两种不同的键盘输入模式. <strong>编辑模式</strong>允许您将代码或文本输入到一个单元格中，并通过一个绿色的单元格来表示 <strong>命令模式</strong>将键盘与笔记本级命令绑定在一起，并通过一个灰色的单元格边界显示，该边框为蓝色的左边框。</p><h4 id="命令行模式-按-Esc-生效-编辑快捷键"><a href="#命令行模式-按-Esc-生效-编辑快捷键" class="headerlink" title="命令行模式(按 Esc 生效)编辑快捷键"></a>命令行模式(按 Esc 生效)编辑快捷键</h4><p>F: 查找并且替换</p><p>Ctrl-Shift-F: 打开命令配置</p><a id="more"></a>
+
+
 <p>Ctrl-Shift-P: 打开命令配置</p>
 <p>Enter: 进入编辑模式</p>
 <p>P: 打开命令配置</p>
@@ -323,6 +349,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>WJS
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://59.110.165.2/2019/10/26/jupyter%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="jupyter快捷键">http://59.110.165.2/2019/10/26/jupyter%E5%BF%AB%E6%8D%B7%E9%94%AE/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
 
@@ -386,7 +429,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="site-author-image" itemprop="image" alt="WJS"
-    src="/images/avatar.gif">
+    src="/images/mmn.png">
   <p class="site-author-name" itemprop="name">WJS</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -453,12 +496,15 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
+  <script defer src="/lib/three/three.min.js"></script>
 
 
   
@@ -467,6 +513,8 @@
 
 
 
+
+  <script src="/js/local-search.js"></script>
 
 
 

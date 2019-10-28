@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -27,7 +28,7 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -38,7 +39,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -50,12 +51,12 @@
   };
 </script>
 
-  <meta name="description" content="colorUI使用一、colorUI简介官网地址—还在完善 colorUI特点：  组件精美，色彩十分鲜艳  封装特特特特别的好，每一个样式都是单独的class选择器，都是封装极好的css小组件  兼容性，扩展性极好。亲测在vant weep组件上可以完美使用，并且对于微信原生组件的支持很好。    二、使用方法 下载 GIthub地址：https:&#x2F;&#x2F;blog.csdn.net&#x2F;IT_TIfar">
+  <meta name="description" content="colorUI使用一、colorUI简介官网地址—还在完善colorUI特点： 组件精美，色彩十分鲜艳  封装特特特特别的好，每一个样式都是单独的class选择器，都是封装极好的css小组件  兼容性，扩展性极好。亲测在vant weep组件上可以完美使用，并且对于微信原生组件的支持很好。   二、使用方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="colorUI使用">
 <meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;2019&#x2F;10&#x2F;26&#x2F;colorUI%E4%BD%BF%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="SuperAI">
-<meta property="og:description" content="colorUI使用一、colorUI简介官网地址—还在完善 colorUI特点：  组件精美，色彩十分鲜艳  封装特特特特别的好，每一个样式都是单独的class选择器，都是封装极好的css小组件  兼容性，扩展性极好。亲测在vant weep组件上可以完美使用，并且对于微信原生组件的支持很好。    二、使用方法 下载 GIthub地址：https:&#x2F;&#x2F;blog.csdn.net&#x2F;IT_TIfar">
+<meta property="og:description" content="colorUI使用一、colorUI简介官网地址—还在完善colorUI特点： 组件精美，色彩十分鲜艳  封装特特特特别的好，每一个样式都是单独的class选择器，都是封装极好的css小组件  兼容性，扩展性极好。亲测在vant weep组件上可以完美使用，并且对于微信原生组件的支持很好。   二、使用方法">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;images&#x2F;Snipaste_2019-08-19_21-14-05.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;images&#x2F;Snipaste_2019-08-19_21-20-59.png">
@@ -182,9 +183,34 @@
     <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -211,7 +237,7 @@
     <link itemprop="mainEntityOfPage" href="http://59.110.165.2/2019/10/26/colorUI%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mmn.png">
       <meta itemprop="name" content="WJS">
       <meta itemprop="description" content="">
     </span>
@@ -245,9 +271,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="colorUI使用"><a href="#colorUI使用" class="headerlink" title="colorUI使用"></a>colorUI使用</h4><h5 id="一、colorUI简介"><a href="#一、colorUI简介" class="headerlink" title="一、colorUI简介"></a>一、colorUI简介</h5><p><a href="https://www.color-ui.com/" target="_blank" rel="noopener">官网地址</a>—还在完善</p>
-<p><strong>colorUI特点：</strong></p>
-<ol>
+        <h4 id="colorUI使用"><a href="#colorUI使用" class="headerlink" title="colorUI使用"></a>colorUI使用</h4><h5 id="一、colorUI简介"><a href="#一、colorUI简介" class="headerlink" title="一、colorUI简介"></a>一、colorUI简介</h5><p><a href="https://www.color-ui.com/" target="_blank" rel="noopener">官网地址</a>—还在完善</p><p><strong>colorUI特点：</strong></p><ol>
 <li><p>组件精美，色彩十分鲜艳</p>
 </li>
 <li><p>封装特特特特别的好，每一个样式都是单独的class选择器，都是封装极好的css小组件</p>
@@ -255,8 +279,10 @@
 <li><p>兼容性，扩展性极好。亲测在vant weep组件上可以完美使用，并且对于微信原生组件的支持很好。</p>
 </li>
 <li></li>
-</ol>
-<h5 id="二、使用方法"><a href="#二、使用方法" class="headerlink" title="二、使用方法"></a>二、使用方法</h5><ol>
+</ol><h5 id="二、使用方法"><a href="#二、使用方法" class="headerlink" title="二、使用方法"></a>二、使用方法</h5><a id="more"></a>
+
+
+<ol>
 <li><p><strong>下载</strong></p>
 <p><a href="https://blog.csdn.net/IT_TIfarmer/article/details/88380308" target="_blank" rel="noopener">GIthub地址：https://blog.csdn.net/IT_TIfarmer/article/details/88380308</a>，下载后得到一个压缩包，解压后得到：</p>
 <p><img src="../../../../images/Snipaste_2019-08-19_21-14-05.png" alt="img"></p>
@@ -309,6 +335,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>WJS
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://59.110.165.2/2019/10/26/colorUI%E4%BD%BF%E7%94%A8/" title="colorUI使用">http://59.110.165.2/2019/10/26/colorUI%E4%BD%BF%E7%94%A8/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
 
@@ -369,7 +412,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="site-author-image" itemprop="image" alt="WJS"
-    src="/images/avatar.gif">
+    src="/images/mmn.png">
   <p class="site-author-name" itemprop="name">WJS</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -436,12 +479,15 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
+  <script defer src="/lib/three/three.min.js"></script>
 
 
   
@@ -450,6 +496,8 @@
 
 
 
+
+  <script src="/js/local-search.js"></script>
 
 
 

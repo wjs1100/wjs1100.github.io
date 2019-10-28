@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -27,7 +28,7 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -38,7 +39,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -50,12 +51,12 @@
   };
 </script>
 
-  <meta name="description" content="数据标准化在现实生活中，一个目标变量（y）可以认为是由多个特征变量（x）影响和控制的，那么这些变量的量纲和数值的量级就会不一样，是得各种数据无法直接比较。 标准化处理，可以使得不同的特征变量具有相同的尺度（也就是说将特征的值控制在某个范围内），这样目标变量就可以由多个相同尺寸的特征变量进行控制，这样，在使用梯度下降法学习参数的时候，不同特征对参数的影响程度就一样了。 案例参考博客：https:&#x2F;&#x2F;">
+  <meta name="description" content="数据标准化在现实生活中，一个目标变量（y）可以认为是由多个特征变量（x）影响和控制的，那么这些变量的量纲和数值的量级就会不一样，是得各种数据无法直接比较。标准化处理，可以使得不同的特征变量具有相同的尺度（也就是说将特征的值控制在某个范围内），这样目标变量就可以由多个相同尺寸的特征变量进行控制，这样，在使用梯度下降法学习参数的时候，不同特征对参数的影响程度就一样了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数学知识（一）---数据标准化">
 <meta property="og:url" content="http:&#x2F;&#x2F;59.110.165.2&#x2F;2019&#x2F;10&#x2F;26&#x2F;%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89---%E6%95%B0%E6%8D%AE%E6%A0%87%E5%87%86%E5%8C%96&#x2F;index.html">
 <meta property="og:site_name" content="SuperAI">
-<meta property="og:description" content="数据标准化在现实生活中，一个目标变量（y）可以认为是由多个特征变量（x）影响和控制的，那么这些变量的量纲和数值的量级就会不一样，是得各种数据无法直接比较。 标准化处理，可以使得不同的特征变量具有相同的尺度（也就是说将特征的值控制在某个范围内），这样目标变量就可以由多个相同尺寸的特征变量进行控制，这样，在使用梯度下降法学习参数的时候，不同特征对参数的影响程度就一样了。 案例参考博客：https:&#x2F;&#x2F;">
+<meta property="og:description" content="数据标准化在现实生活中，一个目标变量（y）可以认为是由多个特征变量（x）影响和控制的，那么这些变量的量纲和数值的量级就会不一样，是得各种数据无法直接比较。标准化处理，可以使得不同的特征变量具有相同的尺度（也就是说将特征的值控制在某个范围内），这样目标变量就可以由多个相同尺寸的特征变量进行控制，这样，在使用梯度下降法学习参数的时候，不同特征对参数的影响程度就一样了。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-26T03:17:42.787Z">
 <meta name="twitter:card" content="summary">
@@ -175,9 +176,34 @@
     <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -204,7 +230,7 @@
     <link itemprop="mainEntityOfPage" href="http://59.110.165.2/2019/10/26/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89---%E6%95%B0%E6%8D%AE%E6%A0%87%E5%87%86%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mmn.png">
       <meta itemprop="name" content="WJS">
       <meta itemprop="description" content="">
     </span>
@@ -238,8 +264,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="数据标准化"><a href="#数据标准化" class="headerlink" title="数据标准化"></a>数据标准化</h3><p>在现实生活中，一个目标变量（y）可以认为是由多个特征变量（x）影响和控制的，那么这些变量的量纲和数值的量级就会不一样，是得各种数据无法直接比较。</p>
-<p>标准化处理，可以使得不同的特征变量具有相同的尺度（也就是说将特征的值控制在某个范围内），这样目标变量就可以由多个相同尺寸的特征变量进行控制，这样，在使用梯度下降法学习参数的时候，不同特征对参数的影响程度就一样了。</p>
+        <h3 id="数据标准化"><a href="#数据标准化" class="headerlink" title="数据标准化"></a>数据标准化</h3><p>在现实生活中，一个目标变量（y）可以认为是由多个特征变量（x）影响和控制的，那么这些变量的量纲和数值的量级就会不一样，是得各种数据无法直接比较。</p><p>标准化处理，可以使得不同的特征变量具有相同的尺度（也就是说将特征的值控制在某个范围内），这样目标变量就可以由多个相同尺寸的特征变量进行控制，这样，在使用梯度下降法学习参数的时候，不同特征对参数的影响程度就一样了。</p><a id="more"></a>
+
 <p>案例参考博客：<a href="https://blog.csdn.net/saltriver/article/details/77751801" target="_blank" rel="noopener">https://blog.csdn.net/saltriver/article/details/77751801</a></p>
 <h5 id="标准化计算公式："><a href="#标准化计算公式：" class="headerlink" title="标准化计算公式："></a>标准化计算公式：</h5><p>$$<br>标准积分 = \frac {数据值-平均值}{标准差}<br>$$</p>
 <p>下面这几类问题一般都需要进行数据标准化：</p>
@@ -277,6 +303,23 @@
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>WJS
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://59.110.165.2/2019/10/26/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89---%E6%95%B0%E6%8D%AE%E6%A0%87%E5%87%86%E5%8C%96/" title="数学知识（一）---数据标准化">http://59.110.165.2/2019/10/26/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89---%E6%95%B0%E6%8D%AE%E6%A0%87%E5%87%86%E5%8C%96/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
 
@@ -340,7 +383,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="site-author-image" itemprop="image" alt="WJS"
-    src="/images/avatar.gif">
+    src="/images/mmn.png">
   <p class="site-author-name" itemprop="name">WJS</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -407,12 +450,15 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
+  <script defer src="/lib/three/three.min.js"></script>
 
 
   
@@ -421,6 +467,8 @@
 
 
 
+
+  <script src="/js/local-search.js"></script>
 
 
 

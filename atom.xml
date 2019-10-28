@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://59.110.165.2/"/>
-  <updated>2019-10-26T03:17:42.777Z</updated>
+  <updated>2019-10-28T03:29:09.634Z</updated>
   <id>http://59.110.165.2/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深度学习简析(一)</title>
+    <link href="http://59.110.165.2/2019/10/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AE%80%E6%9E%90(%E4%B8%80)/"/>
+    <id>http://59.110.165.2/2019/10/28/深度学习简析(一)/</id>
+    <published>2019-10-28T03:29:09.634Z</published>
+    <updated>2019-10-28T03:29:09.634Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="生物神经网络与深度学习"><a href="#生物神经网络与深度学习" class="headerlink" title="生物神经网络与深度学习"></a>生物神经网络与深度学习</h3><hr><h4 id="一、生物神经网络"><a href="#一、生物神经网络" class="headerlink" title="一、生物神经网络"></a>一、生物神经网络</h4><p><strong>生物神经构成及特性：</strong></p><ol><li>神经元形成网络</li><li>对于来自其他神经元传递过来的信号，<strong>如果和不超过某个固定大小的值(阈值)</strong>，则神经元不做任何反应</li><li>对于来自其他神经元传递过来的信号，<strong>如果和超过某个固定大小的值(阈值)</strong>，则神经元做出反应–（点火），<strong>并传递固定强度的信号</strong></li><li>在第2步和第3步中，从多个神经元传递过来的信号之和中，<strong>每个信号对应的权重不同</strong></li></ol><a id="more"></a><p><strong>神经元点火:</strong></p><ol><li><p>来自其他多个神经元的信号之和成为神经元的输入</p></li><li><p>如果这个信号之和超过神经元固有的阈值，则点火</p></li><li><p>神经元输入为固定值，可以使用数字1和0来表示，即使多个输入，输入值也是一个<br>$$<br>f(x)<br>\begin{cases}<br>无输入信号: &amp;x=0\<br>有输入信号: &amp;x=1<br>\end{cases}<br>$$</p></li></ol><p>   神经元在接受上一级神经元的输入时，具有<strong>权重</strong>，虽然每个神经元的<strong>输入值都相同</strong>，但<strong>权重不同</strong></p><p>   因此点火表达式：<br>   $$<br>   f(x)<br>   \begin {cases}<br>   无输出信号 (y=0): w_1x_1 + w_2x_2 + w_3x_3 &lt; \theta \<br>   有输出信号 (y=1): w_1x_1 + w_2x_2 + w_3x_3 \ge \theta \<br>   \end{cases}<br>   $$<br>   此处的<strong>θ是该神经元固有的阈值</strong></p><p><strong>神经元点火图形表示：</strong></p><ol><li><p>函数表达式：</p><p><strong>神经元加权输入</strong><br>$$<br>y = u(w_1x_1 + w_2x_2 + w_3x_3 - \theta)<br>$$</p></li></ol><h5 id="插入图片2"><a href="#插入图片2" class="headerlink" title="插入图片2"></a>插入图片2</h5><blockquote><p>单位阶跃函数：<br>$$<br>u(x) =<br>\begin {cases}<br>0 (z &lt; 0) \<br>1 (z \ge 0)<br>\end {cases}<br>$$</p></blockquote><p><strong>神经元点火一般化</strong></p><p>去除“生物”这个条件，那么0和1这个条件也是可以去除的，那么我们进行修正：<br>$$<br>y = a(w_1x_1 + w_2x_2 + w_3x_3 - \theta)<br>$$<br>其中，函数a为建模者自定义的函数，成为<strong>激活函数</strong>。x1 、x2、x3是模型所允许的任何数据，y为自定义函数a可以取到的任意值。</p><p>但是符号容易导致计算出错，因此用b替代θ，转化为：<br>$$<br>y = a(w_1x_1 + w_2x_2 + w_3x_3 + b)<br>$$<br>b被称为<strong>偏置</strong>，对于一般化的神经元，偏置可正可负。</p><blockquote><p>ps：上式可与转化为向量的内积，扩展后为张量<br>$$<br>(w_1 , w_2 , w_3) * (x_1 , x_2 , x_3) + b<br>$$</p></blockquote><p><strong>Sigmoid函数</strong><br>$$<br>\delta(z) = {1\over1+e^{-z}}<br>$$<br>激活函数之一，sigmoid函数具有以下优良性质：</p><p>1、输出值是大于0小于1的任何数；</p><p>2、该函数连续且光滑，处处可导。</p><hr><h4 id="二、神经网络构成"><a href="#二、神经网络构成" class="headerlink" title="二、神经网络构成"></a>二、神经网络构成</h4><p>在上一小节中的神经单元，经过一定的顺序连接后，即构成了神经网络。</p><p>人工神经网络根据连接方式的不同，分为：</p><p>基础的<strong>阶层型神经网络</strong>和其发展来的<strong>卷积神经网络</strong></p><h5 id="阶层型神经网络"><a href="#阶层型神经网络" class="headerlink" title="阶层型神经网络"></a>阶层型神经网络</h5><p>阶层性神经网络按<strong>层</strong>划分神经元，分为<strong>输入层、隐藏层、输出层</strong></p><p><img src="../../../../images/2-2.jpg" alt="2-1"></p><p><strong>输入层</strong>：负责读取给予神经网络的信息，这个层的神经单元没有输入箭头，他们是简单的神经单元，只是将从数据的得到的值原样输出。</p><p><strong>隐藏层</strong>：执行以下两步：</p><blockquote><ol><li><p>将神经单元的多个输入x1、x2 、x3、….xn等整理为加权输入z<br>$$<br>z = w_1x_1 + w_2x_2 + w_3x_3 +…+ w_nx_n + b<br>$$</p></li><li><p>神经单元通过激活函数a(z)，将加权输入z转换为输出y<br>$$<br>y = a(z)<br>$$</p></li></ol></blockquote><p><strong>输出层</strong>：与隐藏层一样执行信息处理操作1和2，并显示计算出的结果，接就是整个网络的输出。</p><p><strong>深度学习</strong>：按照以上的神经单元来解释就是叠加了很多层的神经网络。</p><p>####　三、一个简单的样例</p><p><img src="../../../../images/2-2.jpg" alt="2-1"></p><p>这是一个识别手写数字１和０的神经网络，该网络的特征是：<strong>前一层的神经单元与下一层的所有神经单元都有连接</strong>，这样的层被称为<strong>全连接层</strong>。</p><p>第一部分：输入层</p><p>输入层有12个神经单元分别对应图像的每个像素，输入层神经单元的输入与输出相同，激活函数可以使用恒等函数 a(z) = z 来充当</p><p>第三部分：输出层</p><p>输出层采用两个神经单元，分别对1和0敏感。采用两个神经单元结构比较简单。可以采用sigmoid激活函数</p><p>第二部分：隐藏层</p><p>隐藏层具有<strong>特征提取</strong>功能，具体解释见下小节。</p><p>####　四、隐藏层简析</p><p>首先，输入层的神经单元分别负责一个像素区域，当像素信号是OFF(值为0)时处于休眠状态，当信号时ON(值为1)时处于兴奋状态。让后输入层将本层的信号传输到隐藏层中。</p><p>接着，隐藏层的每一个神经单元都会介绍12个输入，但时每个输入的权值不同，例如三个隐藏单元一次对以下的三种模式敏感：</p><p><img src="../../../../images/4-1.jpg" alt="4-1"></p><p>对应的连接：</p><p><img src="../../../../images/4-2.jpg" alt="1566285017980"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;生物神经网络与深度学习&quot;&gt;&lt;a href=&quot;#生物神经网络与深度学习&quot; class=&quot;headerlink&quot; title=&quot;生物神经网络与深度学习&quot;&gt;&lt;/a&gt;生物神经网络与深度学习&lt;/h3&gt;&lt;hr&gt;&lt;h4 id=&quot;一、生物神经网络&quot;&gt;&lt;a href=&quot;#一、生物神经网络&quot; class=&quot;headerlink&quot; title=&quot;一、生物神经网络&quot;&gt;&lt;/a&gt;一、生物神经网络&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;生物神经构成及特性：&lt;/strong&gt;&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;神经元形成网络&lt;/li&gt;
+&lt;li&gt;对于来自其他神经元传递过来的信号，&lt;strong&gt;如果和不超过某个固定大小的值(阈值)&lt;/strong&gt;，则神经元不做任何反应&lt;/li&gt;
+&lt;li&gt;对于来自其他神经元传递过来的信号，&lt;strong&gt;如果和超过某个固定大小的值(阈值)&lt;/strong&gt;，则神经元做出反应–（点火），&lt;strong&gt;并传递固定强度的信号&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;在第2步和第3步中，从多个神经元传递过来的信号之和中，&lt;strong&gt;每个信号对应的权重不同&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Untitled</title>
+    <link href="http://59.110.165.2/2019/10/28/Untitled/"/>
+    <id>http://59.110.165.2/2019/10/28/Untitled/</id>
+    <published>2019-10-28T03:29:09.621Z</published>
+    <updated>2019-10-28T03:29:09.621Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>A tensor is something that transforms like a tensor! 一个量, 在不同的参考系下按照某种特定的法则进行变换, 就是张量</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;A tensor is something that transforms like a tensor! 一个量, 在不同的参考系下按照某种特定的法则进行变换, 就是张量&lt;/strong&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>K折交叉验证</title>
+    <link href="http://59.110.165.2/2019/10/28/K%E6%8A%98%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/"/>
+    <id>http://59.110.165.2/2019/10/28/K折交叉验证/</id>
+    <published>2019-10-28T03:29:09.620Z</published>
+    <updated>2019-10-28T03:29:09.620Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Windows下Node.js与npm的安装</title>
